@@ -62,23 +62,41 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% feedforward
+a1 = [ones(m,1) X];            % dim a1: 5000 x 401
 
+z2 = Theta1 * a1';             % dim z2: 25 x 5000
+a2 = [ones(m,1) sigmoid(z2)']; % dim a2: 5000 x 26 
 
+z3 = Theta2 * a2';             % dim z3: 10 x 5000
+a3 = sigmoid(z3)';             % dim a3: 5000 x 10
 
+% recode labels to binary vectors
+all_combos = eye(num_labels);
+y_vector = all_combos(y,:);
 
+% compute regularisation term
+regulariser = sum(sum(Theta1(:,2:end).^2, 2)) + sum(sum(Theta2(:,2:end).^2, 2));
 
+% compute regularised cost function
+J = (1/m) * sum(sum(-y_vector .* log(a3) - (1 - y_vector) .* log(1 - a3)))...
+    + lambda/(2*m) * regulariser;
 
+% backpropagation
+d3 = a3 - y_vector;            % dim d3: 5000 x 10
+d2 = d3 * Theta2 .* sigmoidGradient(vertcat(ones([1, size(z2, 2)]), z2)');
+d2 = d2(:, 2:end);             % dim d2: 5000 x 25
 
+delta1 = d2' * a1;             % dim delta1: 25 * 401
+delta2 = d3' * a2;             % dim delta2: 10 * 26
 
+% compute gradient regularisation term
+regu_1 = (lambda/m) * [zeros(size(Theta1, 1), 1) Theta1(:, 2:end)];
+regu_2 = (lambda/m) * [zeros(size(Theta2, 1), 1) Theta2(:, 2:end)];
 
-
-
-
-
-
-
-
-
+% compute gradients
+Theta1_grad = delta1 / m + regu_1;
+Theta2_grad = delta2 / m + regu_2;
 
 % -------------------------------------------------------------
 
