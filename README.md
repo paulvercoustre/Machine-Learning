@@ -1,5 +1,5 @@
 # Marchine-Learning
-Stanford Online Course in Machine Learning \\
+Stanford Online Course in Machine Learning \
 Available at: https://www.coursera.org/learn/machine-learning
 
 Skills developed:
@@ -17,9 +17,9 @@ Skills developed:
 - Octave
 
 Prerequisites:
-- Calculus: \\
+- Calculus: \
 Solve problems with partial derivatives and chain rule
-- Linear Algebra: \\
+- Linear Algebra: \
 Summarize basic linear algebra concepts, including vector notation and matrix operations
-- Octave/Matlab
+- Octave/Matlab \
 Work comfortably with numerical computing software, such as octave or matlab
