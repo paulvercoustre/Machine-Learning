@@ -1,0 +1,16 @@
+Dear students,
+
+ This is a reminder that the projects are due on Monday (evening, as I was asked). As usual, the deadline is flexible but late projects will be penalized (for a same quality, a project submitted on Wednesday will reach a lower grade than one on Tuesday, etc.). The submission site is the usual one:
+https://www.lri.fr/~gcharpia/machinelearningcourse/validation/
+
+ On another topic: any remark about the course (positive or negative, what to improve, etc.) is welcomed here:
+https://www.lri.fr/~gcharpia/machinelearningcourse/comments/
+The comments are anonymous.
+     login: anonymous
+  password: 2017#Comments
+
+
+ Best,
+
+Guillaume & Corentin
+
