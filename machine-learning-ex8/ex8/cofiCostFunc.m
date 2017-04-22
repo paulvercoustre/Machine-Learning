@@ -40,20 +40,20 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+J = (1/2) * sum(sum(((X * Theta' - Y).^2) .* R)) + (lambda/2) * ...
+    sum(sum(Theta .^2)) + (lambda/2) * sum(sum(X.^2));
 
+for i = 1:num_movies
+    idx = find(R(i, :) == 1);
+    X_grad(i, :) = (X(i, :) * Theta(idx, :)' - Y(i, idx)) * Theta(idx, :) + ...
+        lambda * X(i, :);
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
+for j = 1:num_users
+    idx = find(R(:, j) == 1);
+    Theta_grad(j, :) = (X(idx, :) * Theta(j, :)' - Y(idx, j))' * X(idx, :) + ...
+        lambda * Theta(j, :);
+end
 
 % =============================================================
 
